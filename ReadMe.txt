@@ -1,0 +1,45 @@
+CAN2 CanHandleToDC 接DC模块
+CAN1 CanHandleToBMS 接BMS模块
+PILE PE4 CC1 枪头检测
+AC_DELAY PC2 继电器控制交流接触器
+PILE  PE4 桩头检测
+DS18B20 PE5
+LED3,LED4,LED2  PF8,PF7,PF9
+BMS_RELAY   PF10
+DOOR PF11
+BREAK PA5
+IMPACT PA4
+LOCK_RELAY PG9
+DC_RELAY PA15
+FAN_RELAY PA6
+RED_RELAY PB1
+GREEN_RELAY PF14
+F_RDY PB5
+F_RST PB0
+F_WD PF15
+F_CS PG0
+F_SCLK PG6
+F_SDI PG8
+F_SDO PD11
+
+
+读卡器信息
+卡号   4byte
+金额   4byte
+未付费标志
+
+
+FM24CL02 小存储器
+Page 0
+0-100 存储实时交易 
+0xf0-0xf3  电能
+0xff 用于校验存储器是否正常工作
+Page1
+0-100 存储系统参数
+101-200 网络参数
+
+AT45DB161DTU
+写0x82
+读0xD2
+
+
