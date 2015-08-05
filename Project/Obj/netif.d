@@ -1,0 +1,27 @@
+.\Obj\netif.o: ..\Middlewares\Third_Party\LwIP\src\core\netif.c
+.\Obj\netif.o: ..\Middlewares\Third_Party\LwIP\src\include\lwip/opt.h
+.\Obj\netif.o: ..\User\Inc\lwipopts.h
+.\Obj\netif.o: ..\Middlewares\Third_Party\LwIP\src\include\lwip/debug.h
+.\Obj\netif.o: ..\Middlewares\Third_Party\LwIP\src\include\lwip/arch.h
+.\Obj\netif.o: ..\Middlewares\Third_Party\LwIP\system\arch/cc.h
+.\Obj\netif.o: ..\Middlewares\Third_Party\LwIP\system\arch/cpu.h
+.\Obj\netif.o: ..\Middlewares\Third_Party\LwIP\src\include\lwip/opt.h
+.\Obj\netif.o: D:\Program Files\Keil\ARM\RV31\Inc\stdio.h
+.\Obj\netif.o: ..\Middlewares\Third_Party\LwIP\src\include\lwip/def.h
+.\Obj\netif.o: ..\Middlewares\Third_Party\LwIP\src\include\ipv4\lwip/ip_addr.h
+.\Obj\netif.o: ..\Middlewares\Third_Party\LwIP\src\include\lwip/netif.h
+.\Obj\netif.o: ..\Middlewares\Third_Party\LwIP\src\include\lwip/err.h
+.\Obj\netif.o: ..\Middlewares\Third_Party\LwIP\src\include\lwip/pbuf.h
+.\Obj\netif.o: ..\Middlewares\Third_Party\LwIP\src\include\lwip/tcp_impl.h
+.\Obj\netif.o: ..\Middlewares\Third_Party\LwIP\src\include\lwip/tcp.h
+.\Obj\netif.o: ..\Middlewares\Third_Party\LwIP\src\include\lwip/mem.h
+.\Obj\netif.o: ..\Middlewares\Third_Party\LwIP\src\include\ipv4\lwip/ip.h
+.\Obj\netif.o: ..\Middlewares\Third_Party\LwIP\src\include\ipv4\lwip/icmp.h
+.\Obj\netif.o: ..\Middlewares\Third_Party\LwIP\src\include\lwip/snmp.h
+.\Obj\netif.o: ..\Middlewares\Third_Party\LwIP\src\include\ipv4\lwip/igmp.h
+.\Obj\netif.o: ..\Middlewares\Third_Party\LwIP\src\include\netif/etharp.h
+.\Obj\netif.o: ..\Middlewares\Third_Party\LwIP\src\include\lwip/stats.h
+.\Obj\netif.o: ..\Middlewares\Third_Party\LwIP\src\include\lwip/memp.h
+.\Obj\netif.o: ..\Middlewares\Third_Party\LwIP\src\include\lwip/memp_std.h
+.\Obj\netif.o: ..\Middlewares\Third_Party\LwIP\src\include\lwip/dhcp.h
+.\Obj\netif.o: ..\Middlewares\Third_Party\LwIP\src\include\lwip/udp.h

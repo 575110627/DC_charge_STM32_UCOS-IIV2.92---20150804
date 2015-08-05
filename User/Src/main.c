@@ -38,6 +38,9 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include <app_cfg.h>
+#include <cpu_core.h>
+#include <ucos_ii.h>
 #include "lwip/opt.h"
 #include "lwip/init.h"
 #include "lwip/netif.h"
@@ -55,8 +58,6 @@
 /** @addtogroup GPIO_IOToggle
   * @{
   */ 
-  
-
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -80,10 +81,6 @@ CAN_HandleTypeDef    CanHandleToDC;
 
 strETHData_Typedef ETHData;
 struct netif gnetif;
-
-
-
-
 
 uint8_t pData[1];
 uint8_t USART1_Buffer[10];
@@ -142,9 +139,7 @@ int main(void)
 	
 	ModulesInit( );//各模块初始化
 	HAL_GPIO_WritePin(GPIOF,GPIO_PIN_9|GPIO_PIN_8|GPIO_PIN_7 , GPIO_PIN_SET);	
-	//SetACRelay( ); //启动交流接触器
 	SystemSelfingCheck( );
-	//SetDCRelay(); //启动直流接触器
 	HAL_TIM_Base_Start_IT(&TimHandle2);
 	HAL_TIM_Base_Start_IT(&TimHandle3);
 	CURRENT = 4000;
@@ -166,7 +161,11 @@ int main(void)
 	unIAPSystemParameter.IAPSystemParameter.CRCHigh = (uint8_t)((crc>>8)&0xff);
 	unIAPSystemParameter.IAPSystemParameter.CRCLow = (uint8_t)(crc&0xff);
 	HAL_I2C_Mem_Write(&I2C1Handle,FM24CL04WRITEADDRESS+2,0x64,I2C_MEMADD_SIZE_8BIT,unIAPSystemParameter.unbuffer,7,0xff);
-  while (1)
+
+  
+
+/* 
+ while (1)
   {
 	  if(CheckEmergencyStopButtonState())   //急停按钮被按下
 			{
@@ -230,6 +229,7 @@ int main(void)
 					HAL_GPIO_TogglePin(GPIOF,GPIO_PIN_9|GPIO_PIN_8|GPIO_PIN_7);	
 			}
    }
+   */
 	 
 }
 static void SystemResource_Config(void)
@@ -550,6 +550,10 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
     ethernetif_set_link(&gnetif);
   }
 }
+
+
+
+
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
 
 

@@ -348,7 +348,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Drivers\STM32F2xx_HAL_Driver\Inc;..\Drivers\CMSIS\Device\ST\STM32F2xx\Include;..\User\Inc;..\Drivers\BSP\STM322xG_EVAL;..\Drivers\CMSIS\Device\ST\STM32F2xx\Include;..\Middlewares\Third_Party\LwIP\src\include;..\Middlewares\Third_Party\LwIP\src\include\ipv4;..\Middlewares\Third_Party\LwIP\system</IncludePath>
+              <IncludePath>..\Drivers\STM32F2xx_HAL_Driver\Inc;..\Drivers\CMSIS\Device\ST\STM32F2xx\Include;..\User\Inc;..\Drivers\BSP\STM322xG_EVAL;..\Drivers\CMSIS\Device\ST\STM32F2xx\Include;..\Middlewares\Third_Party\LwIP\src\include;..\Middlewares\Third_Party\LwIP\src\include\ipv4;..\Middlewares\Third_Party\LwIP\system;..\Ucosii\Include;..\Ucosii\Port;..\Ucosii\Src</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -774,6 +774,37 @@
               <FilePath>..\Middlewares\Third_Party\LwIP\src\netif\etharp.c</FilePath>
             </File>
           </Files>
+        </Group>
+        <Group>
+          <GroupName>Micrium\Software\uC-CPU</GroupName>
+          <Files>
+            <File>
+              <FileName>cpu_cache.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Micrium\Software\uC-CPU\cpu_cache.h</FilePath>
+            </File>
+            <File>
+              <FileName>cpu_core.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Micrium\Software\uC-CPU\cpu_core.c</FilePath>
+            </File>
+            <File>
+              <FileName>cpu_core.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Micrium\Software\uC-CPU\cpu_core.h</FilePath>
+            </File>
+            <File>
+              <FileName>cpu_def.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Micrium\Software\uC-CPU\cpu_def.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Micrium\Software\uC-LIB</GroupName>
+        </Group>
+        <Group>
+          <GroupName>Micrium\Software\uCOS-II</GroupName>
         </Group>
         <Group>
           <GroupName>User</GroupName>

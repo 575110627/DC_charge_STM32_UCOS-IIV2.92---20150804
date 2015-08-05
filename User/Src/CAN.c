@@ -643,7 +643,7 @@ void CAN_mEvent(void)
 					break;
 			case 19:CAN_mEventProc19( );
 					break;
-			case 20:CAN_mEventProc10( );
+			case 20:CAN_mEventProc20( );
 					break;
 			case 21:CAN_mEventProc21( );
 					break;
@@ -1456,6 +1456,7 @@ void CAN_mEventProc19(void)
 }    
 
 //CAN事件处理20,处理 充电机错误报文 报文代号CEM
+
 void CAN_mEventProc20(void)
 {
 	

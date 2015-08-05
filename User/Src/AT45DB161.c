@@ -387,7 +387,7 @@ void SPI_MainMemoryPageWrite(uint16_t Page,uint16_t startaddr,uint8_t *p ,uint16
 } 
 void ReadHisRec1(uint16_t recordno,uint8_t *p ,uint16_t length)   
 {   
-    uint16_t i = 0;
+  //  uint16_t i = 0;
 	  uint16_t page,byteadd ;
     if(1) 
 	  {

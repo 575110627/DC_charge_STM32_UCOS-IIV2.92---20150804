@@ -91,119 +91,121 @@ void AnalyzeReceive(void)
 /*******´Ó»ú½ÓÊÕ¹ã²¥ºÚÃûµ¥*******/
 void ReceiveBroadcastBlacklist(void)
 {
-				uint8_t recebuffer[20];
-				recebuffer[0]  = ETHData.Data[7];                     //ºÚÃûµ¥1
-				recebuffer[1]  = ETHData.Data[8];
-				recebuffer[2]  = ETHData.Data[9];
-				recebuffer[3]  = ETHData.Data[10];
-				recebuffer[4]  = ETHData.Data[11];                    //ºÚÃûµ¥2
-				recebuffer[5]  = ETHData.Data[12];
-				recebuffer[6]  = ETHData.Data[13];
-				recebuffer[7]  = ETHData.Data[14];
-				recebuffer[8]  = ETHData.Data[15];                    //ºÚÃûµ¥3
-				recebuffer[9]  = ETHData.Data[16];
-				recebuffer[10] = ETHData.Data[17];
-				recebuffer[11] = ETHData.Data[18];	
-				recebuffer[12] = ETHData.Data[19];                   //ºÚÃûµ¥4
-				recebuffer[13] = ETHData.Data[20];	
-				recebuffer[14] = ETHData.Data[21];
-				recebuffer[15] = ETHData.Data[22];
-				recebuffer[16] = ETHData.Data[23];                   //ºÚÃûµ¥5
-				recebuffer[17] = ETHData.Data[24];
-				recebuffer[18] = ETHData.Data[25];
-				recebuffer[19] = ETHData.Data[26];	
+    /*
+    uint8_t recebuffer[20];
+    recebuffer[0]  = ETHData.Data[7];                     //ºÚÃûµ¥1
+    recebuffer[1]  = ETHData.Data[8];
+    recebuffer[2]  = ETHData.Data[9];
+    recebuffer[3]  = ETHData.Data[10];
+    recebuffer[4]  = ETHData.Data[11];                    //ºÚÃûµ¥2
+    recebuffer[5]  = ETHData.Data[12];
+    recebuffer[6]  = ETHData.Data[13];
+    recebuffer[7]  = ETHData.Data[14];
+    recebuffer[8]  = ETHData.Data[15];                    //ºÚÃûµ¥3
+    recebuffer[9]  = ETHData.Data[16];
+    recebuffer[10] = ETHData.Data[17];
+    recebuffer[11] = ETHData.Data[18];	
+    recebuffer[12] = ETHData.Data[19];                   //ºÚÃûµ¥4
+    recebuffer[13] = ETHData.Data[20];	
+    recebuffer[14] = ETHData.Data[21];
+    recebuffer[15] = ETHData.Data[22];
+    recebuffer[16] = ETHData.Data[23];                   //ºÚÃûµ¥5
+    recebuffer[17] = ETHData.Data[24];
+    recebuffer[18] = ETHData.Data[25];
+    recebuffer[19] = ETHData.Data[26];
+*/	
 }
 /*******´Ó»ú½ÓÊÕ¹ã²¥¶¨Ê±*******/
 void ReceiveBroadcastTime(void)
 {
-			RTCSetTime.Year = ETHData.Data[8];              //Äê15
-			RTCSetTime.Month = ETHData.Data[10];            //ÔÂ
-			RTCSetTime.Day = ETHData.Data[12];              //ÈÕ
-			RTCSetTime.Week = ETHData.Data[14];             //ÐÇÆÚ
-			RTCSetTime.Hour = (ETHData.Data[16]|0x80);             //Ê±
-			RTCSetTime.Minute = ETHData.Data[18];           //·Ö
-			RTCSetTime.Second = ETHData.Data[20];           //Ãë	
-			Set_Time(&RTCSetTime);
-	    UpdateRTC();
+    RTCSetTime.Year = ETHData.Data[8];              //Äê15
+    RTCSetTime.Month = ETHData.Data[10];            //ÔÂ
+    RTCSetTime.Day = ETHData.Data[12];              //ÈÕ
+    RTCSetTime.Week = ETHData.Data[14];             //ÐÇÆÚ
+    RTCSetTime.Hour = (ETHData.Data[16]|0x80);             //Ê±
+    RTCSetTime.Minute = ETHData.Data[18];           //·Ö
+    RTCSetTime.Second = ETHData.Data[20];           //Ãë	
+    Set_Time(&RTCSetTime);
+	UpdateRTC();
 }
 /*******´Ó»ú¹ã²¥³äµç×®ÏµÍ³²ÎÊýÖ¡1******/
 void ReceiveBroadcastSystemData1(void)
 {
-				uint8_t i;
-				uint16_t crc=0xffff;
-				unSystemParameterConfigHandle.SystemParameterConfigHandle.APrice = (ETHData.Data[7]<<8)+ETHData.Data[8];              //Æ½¾ùµç¼Û
-				unSystemParameterConfigHandle.SystemParameterConfigHandle.HPrice=(ETHData.Data[9]<<8)+ETHData.Data[10];              //·åÖµµç¼Û		
-				unSystemParameterConfigHandle.SystemParameterConfigHandle.LPrice=(ETHData.Data[11]<<8)+ETHData.Data[12];             //¹ÈÖµµç¼Û
-				unSystemParameterConfigHandle.SystemParameterConfigHandle.HPriceStartH =(ETHData.Data[13]<<8)+ETHData.Data[14];             //·åÖµµç¼ÛÊ±¼ä ÆðÊ¼Ê±           
-				unSystemParameterConfigHandle.SystemParameterConfigHandle.HPriceStartM=(ETHData.Data[15]<<8)+ETHData.Data[16];              //·åÖµµç¼ÛÊ±¼ä ÆðÊ¼·Ö            
-				unSystemParameterConfigHandle.SystemParameterConfigHandle.HPriceStopH=(ETHData.Data[17]<<8)+ETHData.Data[18];            //·åÖµµç¼ÛÊ±¼ä ½áÊøÊ±           
-				unSystemParameterConfigHandle.SystemParameterConfigHandle.HPriceStopM=(ETHData.Data[19]<<8)+ETHData.Data[20];            //·åÖµµç¼ÛÊ±¼ä ½áÊø·Ö
-				crc=CalcCrc(unSystemParameterConfigHandle.unbuffer,60);
-				unSystemParameterConfigHandle.SystemParameterConfigHandle.CRCHigh = (uint8_t)((crc>>8)&0xff);            //CRC
-				unSystemParameterConfigHandle.SystemParameterConfigHandle.CRCLow = (uint8_t)(crc&0xff) ;  			//CRC
-				HAL_I2C_Mem_Write(&I2C1Handle,FM24CL04WRITEADDRESS+2,0x00,I2C_MEMADD_SIZE_8BIT,unSystemParameterConfigHandle.unbuffer,62,0xff);
-				for(i=0;i<ETHData.Length;i++)
-				{
-					ETHData.Data[i] = ETHData.Data[i]+1;
-				}
-				TCP_Server_SendData(ETHData.Data,ETHData.Length);
-				HAL_I2C_Mem_Read(&I2C1Handle,FM24CL04READADDRESS+2,0x00,I2C_MEMADD_SIZE_8BIT,unSystemParameterConfigHandle.unbuffer,62,0xff);
-				TCP_Server_SendData(unSystemParameterConfigHandle.unbuffer,62);
+    uint8_t i;
+    uint16_t crc=0xffff;
+    unSystemParameterConfigHandle.SystemParameterConfigHandle.APrice = (ETHData.Data[7]<<8)+ETHData.Data[8];              //Æ½¾ùµç¼Û
+    unSystemParameterConfigHandle.SystemParameterConfigHandle.HPrice=(ETHData.Data[9]<<8)+ETHData.Data[10];              //·åÖµµç¼Û		
+    unSystemParameterConfigHandle.SystemParameterConfigHandle.LPrice=(ETHData.Data[11]<<8)+ETHData.Data[12];             //¹ÈÖµµç¼Û
+    unSystemParameterConfigHandle.SystemParameterConfigHandle.HPriceStartH =(ETHData.Data[13]<<8)+ETHData.Data[14];             //·åÖµµç¼ÛÊ±¼ä ÆðÊ¼Ê±           
+    unSystemParameterConfigHandle.SystemParameterConfigHandle.HPriceStartM=(ETHData.Data[15]<<8)+ETHData.Data[16];              //·åÖµµç¼ÛÊ±¼ä ÆðÊ¼·Ö            
+    unSystemParameterConfigHandle.SystemParameterConfigHandle.HPriceStopH=(ETHData.Data[17]<<8)+ETHData.Data[18];            //·åÖµµç¼ÛÊ±¼ä ½áÊøÊ±           
+    unSystemParameterConfigHandle.SystemParameterConfigHandle.HPriceStopM=(ETHData.Data[19]<<8)+ETHData.Data[20];            //·åÖµµç¼ÛÊ±¼ä ½áÊø·Ö
+    crc=CalcCrc(unSystemParameterConfigHandle.unbuffer,60);
+    unSystemParameterConfigHandle.SystemParameterConfigHandle.CRCHigh = (uint8_t)((crc>>8)&0xff);            //CRC
+    unSystemParameterConfigHandle.SystemParameterConfigHandle.CRCLow = (uint8_t)(crc&0xff) ;  			//CRC
+    HAL_I2C_Mem_Write(&I2C1Handle,FM24CL04WRITEADDRESS+2,0x00,I2C_MEMADD_SIZE_8BIT,unSystemParameterConfigHandle.unbuffer,62,0xff);
+    for(i=0;i<ETHData.Length;i++)
+    {
+        ETHData.Data[i] = ETHData.Data[i]+1;
+    }
+    TCP_Server_SendData(ETHData.Data,ETHData.Length);
+    HAL_I2C_Mem_Read(&I2C1Handle,FM24CL04READADDRESS+2,0x00,I2C_MEMADD_SIZE_8BIT,unSystemParameterConfigHandle.unbuffer,62,0xff);
+    TCP_Server_SendData(unSystemParameterConfigHandle.unbuffer,62);
 }
 /*******´Ó»ú¹ã²¥³äµç×®ÏµÍ³²ÎÊýÖ¡2******/
 void ReceiveBroadcastSystemData2(void)
 {
-				uint8_t i;
-				uint16_t crc=0xffff;
-				unSystemParameterConfigHandle.SystemParameterConfigHandle.LPriceStartH = (ETHData.Data[7]<<8)+ETHData.Data[8];         //¹ÈÖµµç¼ÛÊ±¼ä ÆðÊ¼Ê±
-				unSystemParameterConfigHandle.SystemParameterConfigHandle.LPriceStartM = (ETHData.Data[9]<<8)+ETHData.Data[10];         //¹ÈÖµµç¼ÛÊ±¼ä ÆðÊ¼·Ö
-				unSystemParameterConfigHandle.SystemParameterConfigHandle.LPriceStopH  = (ETHData.Data[11]<<8)+ETHData.Data[12];          //¹ÈÖµµç¼ÛÊ±¼ä ½áÊøÊ±
-				unSystemParameterConfigHandle.SystemParameterConfigHandle.LPriceStopM  = (ETHData.Data[13]<<8)+ETHData.Data[14];          //¹ÈÖµµç¼ÛÊ±¼ä ½áÊø·Ö
-				unSystemParameterConfigHandle.SystemParameterConfigHandle.StartMode    = (ETHData.Data[15]<<8)+ETHData.Data[16]; 	      //Æô¶¯Ä£Ê½ 
-				unSystemParameterConfigHandle.SystemParameterConfigHandle.BillMode=(ETHData.Data[17]<<8)+ETHData.Data[18];         //¼Æ·Ñ·½Ê½
-				crc=CalcCrc(unSystemParameterConfigHandle.unbuffer,60);
-				unSystemParameterConfigHandle.SystemParameterConfigHandle.CRCHigh = (uint8_t)((crc>>8)&0xff);            //CRC
-				unSystemParameterConfigHandle.SystemParameterConfigHandle.CRCLow = (uint8_t)(crc&0xff) ;  			//CRC
-				HAL_I2C_Mem_Write(&I2C1Handle,FM24CL04WRITEADDRESS+2,0x00,I2C_MEMADD_SIZE_8BIT,unSystemParameterConfigHandle.unbuffer,62,0xff);
-				for(i=0;i<ETHData.Length;i++)
-				{
-					ETHData.Data[i] = ETHData.Data[i]+1;
-				}
-				TCP_Server_SendData(ETHData.Data,ETHData.Length);
-				HAL_I2C_Mem_Read(&I2C1Handle,FM24CL04READADDRESS+2,0x00,I2C_MEMADD_SIZE_8BIT,unSystemParameterConfigHandle.unbuffer,62,0xff);
-				TCP_Server_SendData(unSystemParameterConfigHandle.unbuffer,62);
+    uint8_t i;
+    uint16_t crc=0xffff;
+    unSystemParameterConfigHandle.SystemParameterConfigHandle.LPriceStartH = (ETHData.Data[7]<<8)+ETHData.Data[8];         //¹ÈÖµµç¼ÛÊ±¼ä ÆðÊ¼Ê±
+    unSystemParameterConfigHandle.SystemParameterConfigHandle.LPriceStartM = (ETHData.Data[9]<<8)+ETHData.Data[10];         //¹ÈÖµµç¼ÛÊ±¼ä ÆðÊ¼·Ö
+    unSystemParameterConfigHandle.SystemParameterConfigHandle.LPriceStopH  = (ETHData.Data[11]<<8)+ETHData.Data[12];          //¹ÈÖµµç¼ÛÊ±¼ä ½áÊøÊ±
+    unSystemParameterConfigHandle.SystemParameterConfigHandle.LPriceStopM  = (ETHData.Data[13]<<8)+ETHData.Data[14];          //¹ÈÖµµç¼ÛÊ±¼ä ½áÊø·Ö
+    unSystemParameterConfigHandle.SystemParameterConfigHandle.StartMode    = (ETHData.Data[15]<<8)+ETHData.Data[16]; 	      //Æô¶¯Ä£Ê½ 
+    unSystemParameterConfigHandle.SystemParameterConfigHandle.BillMode=(ETHData.Data[17]<<8)+ETHData.Data[18];         //¼Æ·Ñ·½Ê½
+    crc=CalcCrc(unSystemParameterConfigHandle.unbuffer,60);
+    unSystemParameterConfigHandle.SystemParameterConfigHandle.CRCHigh = (uint8_t)((crc>>8)&0xff);            //CRC
+    unSystemParameterConfigHandle.SystemParameterConfigHandle.CRCLow = (uint8_t)(crc&0xff) ;  			//CRC
+    HAL_I2C_Mem_Write(&I2C1Handle,FM24CL04WRITEADDRESS+2,0x00,I2C_MEMADD_SIZE_8BIT,unSystemParameterConfigHandle.unbuffer,62,0xff);
+    for(i=0;i<ETHData.Length;i++)
+    {
+        ETHData.Data[i] = ETHData.Data[i]+1;
+    }
+    TCP_Server_SendData(ETHData.Data,ETHData.Length);
+    HAL_I2C_Mem_Read(&I2C1Handle,FM24CL04READADDRESS+2,0x00,I2C_MEMADD_SIZE_8BIT,unSystemParameterConfigHandle.unbuffer,62,0xff);
+    TCP_Server_SendData(unSystemParameterConfigHandle.unbuffer,62);
 }
 
 void ReceiveFunction04(void)
 {
-			uint16_t startadd;               //ÆðÊ¼µØÖ·
-			uint8_t startaddH,startaddL;     //ÆðÊ¼µØÖ·¸ßµØÎ»
-			startaddH=ETHData.Data[2];
-			startaddL=ETHData.Data[3];
-			startadd=(startaddH<<8)+startaddL;
-			switch(startadd)
-			{
-				case 0x1000:
-										ReplyToHostPoSlaveStaframe();
-							break;             //´Ó»úÏìÓ¦Ö÷»úÂÖÑ¯´Ó»ú×´Ì¬Ö¡
-				case 0x1020:
-										ReplyToHostReadTotalTranData1();
-							break;         //´Ó»úÏìÓ¦Ö÷»ú¶ÁÈ¡Ò»´ÎÍêÕû½»Ò×Êý¾ÝÖ¡
-				default:
-							break;
-			}	 	 
+    uint16_t startadd;               //ÆðÊ¼µØÖ·
+    uint8_t startaddH,startaddL;     //ÆðÊ¼µØÖ·¸ßµØÎ»
+    startaddH=ETHData.Data[2];
+    startaddL=ETHData.Data[3];
+    startadd=(startaddH<<8)+startaddL;
+    switch(startadd)
+    {
+        case 0x1000:
+                                ReplyToHostPoSlaveStaframe();
+                    break;             //´Ó»úÏìÓ¦Ö÷»úÂÖÑ¯´Ó»ú×´Ì¬Ö¡
+        case 0x1020:
+                                ReplyToHostReadTotalTranData1();
+                    break;         //´Ó»úÏìÓ¦Ö÷»ú¶ÁÈ¡Ò»´ÎÍêÕû½»Ò×Êý¾ÝÖ¡
+        default:
+                    break;
+    }	 	 
 }
 void ReceiveFunction10(void)
 {
-			uint16_t startadd;               //ÆðÊ¼µØÖ·
-			uint8_t startaddH,startaddL;     //ÆðÊ¼µØÖ·¸ßµØÎ
-			startaddH=ETHData.Data[2];
-			startaddL=ETHData.Data[3];
-			startadd=(startaddH<<8)+startaddL;
-			if(startadd == 0x2050)
-			{
-						SendTradingSerialNumber();
-			}		
+    uint16_t startadd;               //ÆðÊ¼µØÖ·
+    uint8_t startaddH,startaddL;     //ÆðÊ¼µØÖ·¸ßµØÎ
+    startaddH=ETHData.Data[2];
+    startaddL=ETHData.Data[3];
+    startadd=(startaddH<<8)+startaddL;
+    if(startadd == 0x2050)
+    {
+        SendTradingSerialNumber();
+    }		
 }
 /*******´Ó»úÏìÓ¦Ö÷»úÂÖÑ¯´Ó»ú×´Ì¬Ö¡*******/
 void ReplyToHostPoSlaveStaframe(void)

@@ -137,6 +137,7 @@ void IfConnect(void)
   * @param err: when connection correctly established err should be ERR_OK 
   * @retval err_t: returned error 
   */
+
 static err_t tcp_echoclient_connected(void *arg, struct tcp_pcb *tpcb, err_t err)
 {
   struct echoclient *es = NULL;

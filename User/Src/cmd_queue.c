@@ -7,7 +7,7 @@ typedef struct _QUEUE
 } QUEUE;//串口数据接收队列结构体
 
 static QUEUE que = {0,0,0};
-static qdata cmd_state = 0;
+//static qdata cmd_state = 0;
 static qsize cmd_pos = 0;
 /**********************************************
 *名    称： queue_reset
@@ -17,7 +17,8 @@ static qsize cmd_pos = 0;
 void queue_reset()
 {
     que._head = que._tail = 0;
-    cmd_pos = cmd_state = 0;
+    cmd_pos = 0;
+   // cmd_state = 0;
 }
 
 /**********************************************
@@ -71,9 +72,11 @@ qsize queue_find_cmd(qdata *buffer,qsize buf_len)
 		if(cmd_pos==0&&_data!=0x13)//帧头出错，跳过
 			continue;
 		if(cmd_pos==0&&_data==0x13)
-			cmd_state=1;
+		//	cmd_state=1;
 		if(cmd_pos==1&&_data==0x14)
-			cmd_state=2;
+        {
+            //cmd_state=2;
+        }	
 		else	
 		{
 			if(cmd_pos==1)
@@ -90,7 +93,7 @@ qsize queue_find_cmd(qdata *buffer,qsize buf_len)
 				if(cmd_pos==9)
 			{
 						cmd_size = cmd_pos;
-	          cmd_state = 0;
+	        //  cmd_state = 0;
 	          cmd_pos = 0;
 						queue_reset();
 	          return cmd_size;
@@ -101,7 +104,7 @@ qsize queue_find_cmd(qdata *buffer,qsize buf_len)
 			 if(cmd_pos==11)
 			{
 						cmd_size = cmd_pos;
-	          cmd_state = 0;
+	         // cmd_state = 0;
 	          cmd_pos = 0;
 						queue_reset();
 	          return cmd_size;

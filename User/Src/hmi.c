@@ -457,7 +457,7 @@ void Count_Down(void)                            //倒计时函数
     /*充电模式选择*/
 void ChargeModChoose(void)
 {
-	uint8_t i;
+	//uint8_t i;
 	if((1 == ChargeFlag))
 	{
 		//SpeechFlag = 0;

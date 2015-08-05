@@ -149,10 +149,11 @@ void DebugMon_Handler(void)
   * @param  None
   * @retval None
   */
+/*
 void PendSV_Handler(void)
 {
 }
-
+*/
 /**
   * @brief  This function handles SysTick Handler.
   * @param  None

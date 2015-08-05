@@ -590,6 +590,7 @@ uint8_t CardLock()
 										return 2;
 								}
 					}
+                    return 0;
 		}
 		else
 		{
@@ -627,7 +628,6 @@ uint8_t CardunLock()
 					return 2;
 			}
 	}
-	else
 			return 0;
 }
 
