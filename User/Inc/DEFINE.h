@@ -3,6 +3,25 @@
 
 #include "stm32f2xx_hal.h"
 
+/***********************************************
+**任务优先级设置
+***********************************************/
+#define  Falg_SUCCEED_PRIO_MEM                1 //标志继承优先级
+#define  Falg_SUCCEED_PRIO                    2 //标志继承优先级
+#define  SYSMonitorTask_PRIO                  3
+#define  LED1Task_PRIO                        4
+#define  LED2Task_PRIO                        5
+#define  LED3Task_PRIO		                  6
+
+
+
+/***********************************************
+**任务堆栈长度设置
+***********************************************/
+#define SYSMonitorTaskStackLengh              128
+#define LED1TaskStackLengh                  128
+#define LED2TaskStackLengh				          128
+#define LED3TaskStackLengh    			128
 
 extern 	uint8_t ReadBuffer[100];
 //CAN通信报文事件的状态机

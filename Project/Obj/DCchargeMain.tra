@@ -72,6 +72,27 @@
 ### List of Objects: adding '".\obj\ip_addr.o"'
 ### List of Objects: adding '".\obj\ip_frag.o"'
 ### List of Objects: adding '".\obj\etharp.o"'
+### List of Objects: adding '".\obj\cpu_core.o"'
+### List of Objects: adding '".\obj\cpu_a.o"'
+### List of Objects: adding '".\obj\cpu_c.o"'
+### List of Objects: adding '".\obj\lib_ascii.o"'
+### List of Objects: adding '".\obj\lib_math.o"'
+### List of Objects: adding '".\obj\lib_mem.o"'
+### List of Objects: adding '".\obj\lib_str.o"'
+### List of Objects: adding '".\obj\os_cpu_a.o"'
+### List of Objects: adding '".\obj\os_cpu_c.o"'
+### List of Objects: adding '".\obj\os_dbg.o"'
+### List of Objects: adding '".\obj\os_core.o"'
+### List of Objects: adding '".\obj\os_flag.o"'
+### List of Objects: adding '".\obj\os_mbox.o"'
+### List of Objects: adding '".\obj\os_mem.o"'
+### List of Objects: adding '".\obj\os_mutex.o"'
+### List of Objects: adding '".\obj\os_q.o"'
+### List of Objects: adding '".\obj\os_sem.o"'
+### List of Objects: adding '".\obj\os_task.o"'
+### List of Objects: adding '".\obj\os_time.o"'
+### List of Objects: adding '".\obj\os_tmr.o"'
+### List of Objects: adding '".\obj\cpu_bsp.o"'
 ### List of Objects: adding '".\obj\main.o"'
 ### List of Objects: adding '".\obj\stm32f2xx_it.o"'
 ### List of Objects: adding '".\obj\stm32f2xx_hal_msp.o"'
@@ -93,14 +114,14 @@
 ### List of Objects: adding '".\obj\ethernetif.o"'
 ### List of Objects: adding '".\obj\eth.o"'
 ### ADS-LD Command completed:
---cpu Cortex-M3 ".\obj\startup_stm32f207xx.o" ".\obj\system_stm32f2xx.o" ".\obj\stm32f2xx_hal.o" ".\obj\stm32f2xx_hal_cortex.o" ".\obj\stm32f2xx_hal_crc.o" ".\obj\stm32f2xx_hal_cryp.o" ".\obj\stm32f2xx_hal_dcmi.o" ".\obj\stm32f2xx_hal_gpio.o" ".\obj\stm32f2xx_hal_hash.o" ".\obj\stm32f2xx_hal_hcd.o" ".\obj\stm32f2xx_hal_irda.o" ".\obj\stm32f2xx_hal_iwdg.o" ".\obj\stm32f2xx_hal_nor.o" ".\obj\stm32f2xx_hal_pccard.o" ".\obj\stm32f2xx_hal_pcd.o" ".\obj\stm32f2xx_hal_pwr.o" ".\obj\stm32f2xx_hal_pwr_ex.o" ".\obj\stm32f2xx_hal_rcc.o" ".\obj\stm32f2xx_hal_rcc_ex.o" ".\obj\stm32f2xx_hal_rng.o" ".\obj\stm32f2xx_hal_smartcard.o" ".\obj\stm32f2xx_hal_wwdg.o" ".\obj\stm32f2xx_hal_uart.o" ".\obj\stm32f2xx_hal_dma.o" ".\obj\stm32f2xx_hal_dma_ex.o" ".\obj\stm32f2xx_hal_can.o" ".\obj\stm32f2xx_hal_eth.o" ".\obj\stm32f2xx_hal_flash.o" ".\obj\stm32f2xx_hal_flash_ex.o" ".\obj\stm32f2xx_hal_i2c.o" ".\obj\stm32f2xx_hal_rtc.o" ".\obj\stm32f2xx_hal_rtc_ex.o" ".\obj\stm32f2xx_hal_tim.o" ".\obj\stm32f2xx_hal_tim_ex.o" ".\obj\stm32f2xx_hal_usart.o" ".\obj\stm32f2xx_ll_usb.o" ".\obj\stm32f2xx_ll_fsmc.o" ".\obj\stm32f2xx_ll_sdmmc.o" ".\obj\api_lib.o" ".\obj\api_msg.o" ".\obj\err.o" ".\obj\netbuf.o" ".\obj\netdb.o" ".\obj\netifapi.o" ".\obj\sockets.o" ".\obj\tcpip.o" ".\obj\def.o" ".\obj\dhcp.o" ".\obj\dns.o" ".\obj\init.o" ".\obj\lwip_timers.o" ".\obj\mem.o" ".\obj\memp.o" ".\obj\netif.o" ".\obj\pbuf.o" ".\obj\raw.o" ".\obj\stats.o" ".\obj\sys.o" ".\obj\tcp.o" ".\obj\tcp_in.o" ".\obj\tcp_out.o" ".\obj\udp.o" ".\obj\autoip.o" ".\obj\icmp.o" ".\obj\igmp.o" ".\obj\inet.o" ".\obj\inet_chksum.o" ".\obj\ip.o" ".\obj\ip_addr.o" ".\obj\ip_frag.o" ".\obj\etharp.o" ".\obj\main.o" ".\obj\stm32f2xx_it.o" ".\obj\stm32f2xx_hal_msp.o" ".\obj\can.o" ".\obj\define.o" ".\obj\am2321.o" ".\obj\ic_driver.o" ".\obj\language.o" ".\obj\ds18b20.o" ".\obj\timer.o" ".\obj\pm.o" ".\obj\cmd_queue.o" ".\obj\hmi.o" ".\obj\hmi_driver.o" ".\obj\usart.o" ".\obj\at45db161.o" ".\obj\tcp_echoclient.o" ".\obj\app_ethernet.o" ".\obj\ethernetif.o" ".\obj\eth.o" --library_type=microlib --strict --scatter ".\Obj\DCchargeMain.sct" 
+--cpu Cortex-M3 ".\obj\startup_stm32f207xx.o" ".\obj\system_stm32f2xx.o" ".\obj\stm32f2xx_hal.o" ".\obj\stm32f2xx_hal_cortex.o" ".\obj\stm32f2xx_hal_crc.o" ".\obj\stm32f2xx_hal_cryp.o" ".\obj\stm32f2xx_hal_dcmi.o" ".\obj\stm32f2xx_hal_gpio.o" ".\obj\stm32f2xx_hal_hash.o" ".\obj\stm32f2xx_hal_hcd.o" ".\obj\stm32f2xx_hal_irda.o" ".\obj\stm32f2xx_hal_iwdg.o" ".\obj\stm32f2xx_hal_nor.o" ".\obj\stm32f2xx_hal_pccard.o" ".\obj\stm32f2xx_hal_pcd.o" ".\obj\stm32f2xx_hal_pwr.o" ".\obj\stm32f2xx_hal_pwr_ex.o" ".\obj\stm32f2xx_hal_rcc.o" ".\obj\stm32f2xx_hal_rcc_ex.o" ".\obj\stm32f2xx_hal_rng.o" ".\obj\stm32f2xx_hal_smartcard.o" ".\obj\stm32f2xx_hal_wwdg.o" ".\obj\stm32f2xx_hal_uart.o" ".\obj\stm32f2xx_hal_dma.o" ".\obj\stm32f2xx_hal_dma_ex.o" ".\obj\stm32f2xx_hal_can.o" ".\obj\stm32f2xx_hal_eth.o" ".\obj\stm32f2xx_hal_flash.o" ".\obj\stm32f2xx_hal_flash_ex.o" ".\obj\stm32f2xx_hal_i2c.o" ".\obj\stm32f2xx_hal_rtc.o" ".\obj\stm32f2xx_hal_rtc_ex.o" ".\obj\stm32f2xx_hal_tim.o" ".\obj\stm32f2xx_hal_tim_ex.o" ".\obj\stm32f2xx_hal_usart.o" ".\obj\stm32f2xx_ll_usb.o" ".\obj\stm32f2xx_ll_fsmc.o" ".\obj\stm32f2xx_ll_sdmmc.o" ".\obj\api_lib.o" ".\obj\api_msg.o" ".\obj\err.o" ".\obj\netbuf.o" ".\obj\netdb.o" ".\obj\netifapi.o" ".\obj\sockets.o" ".\obj\tcpip.o" ".\obj\def.o" ".\obj\dhcp.o" ".\obj\dns.o" ".\obj\init.o" ".\obj\lwip_timers.o" ".\obj\mem.o" ".\obj\memp.o" ".\obj\netif.o" ".\obj\pbuf.o" ".\obj\raw.o" ".\obj\stats.o" ".\obj\sys.o" ".\obj\tcp.o" ".\obj\tcp_in.o" ".\obj\tcp_out.o" ".\obj\udp.o" ".\obj\autoip.o" ".\obj\icmp.o" ".\obj\igmp.o" ".\obj\inet.o" ".\obj\inet_chksum.o" ".\obj\ip.o" ".\obj\ip_addr.o" ".\obj\ip_frag.o" ".\obj\etharp.o" ".\obj\cpu_core.o" ".\obj\cpu_a.o" ".\obj\cpu_c.o" ".\obj\lib_ascii.o" ".\obj\lib_math.o" ".\obj\lib_mem.o" ".\obj\lib_str.o" ".\obj\os_cpu_a.o" ".\obj\os_cpu_c.o" ".\obj\os_dbg.o" ".\obj\os_core.o" ".\obj\os_flag.o" ".\obj\os_mbox.o" ".\obj\os_mem.o" ".\obj\os_mutex.o" ".\obj\os_q.o" ".\obj\os_sem.o" ".\obj\os_task.o" ".\obj\os_time.o" ".\obj\os_tmr.o" ".\obj\cpu_bsp.o" ".\obj\main.o" ".\obj\stm32f2xx_it.o" ".\obj\stm32f2xx_hal_msp.o" ".\obj\can.o" ".\obj\define.o" ".\obj\am2321.o" ".\obj\ic_driver.o" ".\obj\language.o" ".\obj\ds18b20.o" ".\obj\timer.o" ".\obj\pm.o" ".\obj\cmd_queue.o" ".\obj\hmi.o" ".\obj\hmi_driver.o" ".\obj\usart.o" ".\obj\at45db161.o" ".\obj\tcp_echoclient.o" ".\obj\app_ethernet.o" ".\obj\ethernetif.o" ".\obj\eth.o" --library_type=microlib --strict --scatter ".\Obj\DCchargeMain.sct" 
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
 --info sizes --info totals --info unused --info veneers 
  --list ".\List\DCchargeMain.map" -o ".\Obj\DCchargeMain.axf"### Preparing Environment (PrepEnvAds)
 ### ADS-LD Output File: '.\Obj\DCchargeMain.axf'
 ### ADS-LD Command File: '.\Obj\DCchargeMain.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile '.\Obj\DCchargeMain.lnp', Handle=0x000002F8
+### Creating CmdFile '.\Obj\DCchargeMain.lnp', Handle=0x00000D88
 ### Writing '.lnp' file
 ### ADS-LD Command file '.\Obj\DCchargeMain.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

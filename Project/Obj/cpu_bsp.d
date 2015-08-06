@@ -1,0 +1,11 @@
+.\Obj\cpu_bsp.o: ..\BSP\cpu_bsp.c
+.\Obj\cpu_bsp.o: ..\Micrium\Software\uC-CPU\cpu_core.h
+.\Obj\cpu_bsp.o: ..\Micrium\Software\uC-CPU\ARM-Cortex-M3\RealView\cpu.h
+.\Obj\cpu_bsp.o: ..\Micrium\Software\uC-CPU\cpu_def.h
+.\Obj\cpu_bsp.o: ..\User\Inc\cpu_cfg.h
+.\Obj\cpu_bsp.o: ..\Micrium\Software\uC-LIB\lib_def.h
+.\Obj\cpu_bsp.o: ..\Micrium\Software\uC-LIB\lib_mem.h
+.\Obj\cpu_bsp.o: ..\Micrium\Software\uC-CPU\cpu_core.h
+.\Obj\cpu_bsp.o: ..\User\Inc\lib_cfg.h
+.\Obj\cpu_bsp.o: ..\Micrium\Software\uC-LIB\lib_str.h
+.\Obj\cpu_bsp.o: ..\Micrium\Software\uC-LIB\lib_ascii.h

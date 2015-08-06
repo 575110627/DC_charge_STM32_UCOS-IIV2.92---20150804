@@ -1,2 +1,11 @@
 .\Obj\cpu_core.o: ..\Micrium\Software\uC-CPU\cpu_core.c
 .\Obj\cpu_core.o: ..\Micrium\Software\uC-CPU\cpu_core.h
+.\Obj\cpu_core.o: ..\Micrium\Software\uC-CPU\ARM-Cortex-M3\RealView\cpu.h
+.\Obj\cpu_core.o: ..\Micrium\Software\uC-CPU\cpu_def.h
+.\Obj\cpu_core.o: ..\User\Inc\cpu_cfg.h
+.\Obj\cpu_core.o: ..\Micrium\Software\uC-LIB\lib_def.h
+.\Obj\cpu_core.o: ..\Micrium\Software\uC-LIB\lib_mem.h
+.\Obj\cpu_core.o: ..\Micrium\Software\uC-CPU\cpu_core.h
+.\Obj\cpu_core.o: ..\User\Inc\lib_cfg.h
+.\Obj\cpu_core.o: ..\Micrium\Software\uC-LIB\lib_str.h
+.\Obj\cpu_core.o: ..\Micrium\Software\uC-LIB\lib_ascii.h

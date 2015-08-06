@@ -39,6 +39,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f2xx_it.h"
+#include "ucos_ii.h"
 #include "main.h"
 
 /** @addtogroup STM32F2xx_HAL_Examples
@@ -159,10 +160,11 @@ void PendSV_Handler(void)
   * @param  None
   * @retval None
   */
+/*
 void SysTick_Handler(void)
 {
-  HAL_IncTick();
-}
+ //HAL_IncTick();
+    }*/
 
 /******************************************************************************/
 /*                 STM32F2xx Peripherals Interrupt Handlers                   */

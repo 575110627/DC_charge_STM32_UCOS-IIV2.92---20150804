@@ -62,3 +62,40 @@
 .\Obj\main.o: ..\User\Inc\AT45DB161.h
 .\Obj\main.o: ..\User\Inc\app_cfg.h
 .\Obj\main.o: D:\Program Files\Keil\ARM\RV31\Inc\stdio.h
+.\Obj\main.o: ..\Micrium\Software\uC-CPU\cpu_core.h
+.\Obj\main.o: ..\Micrium\Software\uC-CPU\ARM-Cortex-M3\RealView\cpu.h
+.\Obj\main.o: ..\Micrium\Software\uC-CPU\cpu_def.h
+.\Obj\main.o: ..\User\Inc\cpu_cfg.h
+.\Obj\main.o: ..\Micrium\Software\uC-LIB\lib_def.h
+.\Obj\main.o: ..\Micrium\Software\uC-LIB\lib_mem.h
+.\Obj\main.o: ..\Micrium\Software\uC-CPU\cpu_core.h
+.\Obj\main.o: ..\User\Inc\lib_cfg.h
+.\Obj\main.o: ..\Micrium\Software\uC-LIB\lib_str.h
+.\Obj\main.o: ..\Micrium\Software\uC-LIB\lib_ascii.h
+.\Obj\main.o: ..\Micrium\Software\uCOS-II\Source\ucos_ii.h
+.\Obj\main.o: ..\User\Inc\os_cfg.h
+.\Obj\main.o: ..\Micrium\Software\uCOS-II\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h
+.\Obj\main.o: ..\User\Inc\includes.h
+.\Obj\main.o: D:\Program Files\Keil\ARM\RV31\Inc\stdarg.h
+.\Obj\main.o: D:\Program Files\Keil\ARM\RV31\Inc\stdlib.h
+.\Obj\main.o: D:\Program Files\Keil\ARM\RV31\Inc\math.h
+.\Obj\main.o: ..\Micrium\Software\uC-LIB\lib_math.h
+.\Obj\main.o: ..\Middlewares\Third_Party\LwIP\src\include\lwip/opt.h
+.\Obj\main.o: ..\User\Inc\lwipopts.h
+.\Obj\main.o: ..\Middlewares\Third_Party\LwIP\src\include\lwip/debug.h
+.\Obj\main.o: ..\Middlewares\Third_Party\LwIP\src\include\lwip/arch.h
+.\Obj\main.o: ..\Middlewares\Third_Party\LwIP\system\arch/cc.h
+.\Obj\main.o: ..\Middlewares\Third_Party\LwIP\system\arch/cpu.h
+.\Obj\main.o: ..\Middlewares\Third_Party\LwIP\src\include\lwip/opt.h
+.\Obj\main.o: ..\Middlewares\Third_Party\LwIP\src\include\lwip/init.h
+.\Obj\main.o: ..\Middlewares\Third_Party\LwIP\src\include\lwip/netif.h
+.\Obj\main.o: ..\Middlewares\Third_Party\LwIP\src\include\lwip/err.h
+.\Obj\main.o: ..\Middlewares\Third_Party\LwIP\src\include\ipv4\lwip/ip_addr.h
+.\Obj\main.o: ..\Middlewares\Third_Party\LwIP\src\include\lwip/def.h
+.\Obj\main.o: ..\Middlewares\Third_Party\LwIP\src\include\lwip/pbuf.h
+.\Obj\main.o: ..\Middlewares\Third_Party\LwIP\src\include\lwip/lwip_timers.h
+.\Obj\main.o: ..\Middlewares\Third_Party\LwIP\src\include\netif/etharp.h
+.\Obj\main.o: ..\Middlewares\Third_Party\LwIP\src\include\ipv4\lwip/ip.h
+.\Obj\main.o: ..\User\Inc\ethernetif.h
+.\Obj\main.o: ..\User\Inc\app_ethernet.h
+.\Obj\main.o: ..\User\Inc\tcp_echoclient.h

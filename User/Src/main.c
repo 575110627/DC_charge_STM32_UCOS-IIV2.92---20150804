@@ -38,9 +38,11 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include <app_cfg.h>
-#include <cpu_core.h>
-#include <ucos_ii.h>
+#include "app_cfg.h"
+#include "cpu_core.h"
+#include  "cpu_cfg.h"
+#include "ucos_ii.h"
+#include <includes.h>
 #include "lwip/opt.h"
 #include "lwip/init.h"
 #include "lwip/netif.h"
@@ -105,6 +107,14 @@ static void TIM_Config(void);
 static void ModulesInit(void );//各模块初始化
 
 
+OS_STK	SYSMonitorTaskStack[SYSMonitorTaskStackLengh]= {0};
+OS_STK	LED1TaskStack[LED1TaskStackLengh]= {0};
+OS_STK	LED2TaskStack[LED2TaskStackLengh]= {0};
+OS_STK	LED3TaskStack[LED3TaskStackLengh]= {0};
+void SYSMonitorTask(void *pdata);			    //
+void LED1Task(void *pdata);			    //
+void LED2Task(void *pdata);			    //
+void LED3Task(void *pdata);			    //
 /* Private functions ---------------------------------------------------------*/
 /**
   * @brief  Main program
@@ -121,47 +131,54 @@ int main(void)
 	/* Configure the system clock */
 	SystemClock_Config();    //配置系统时钟
 	/* -1- Enable GPIOG, GPIOC and GPIOI Clock (to be able to program the configuration registers) */
-	SystemResource_Config();//系统资源配置	
+	//SystemResource_Config();//系统资源配置	
+    GPIO_Config();
 		/* Configure the BSP */
-  BSP_Config(); 
+  //BSP_Config(); 
   /* Initilaize the LwIP stack */
-  lwip_init();
+  //lwip_init();
   
   /* Configure the Network interface */
-  Netif_Config();  
+  //Netif_Config();  
   
   /* tcp echo server Init */
   //tcp_echoserver_init();
 	//tcp_echoclient_connect();
-  tcp_echoclient_connect();
+  //tcp_echoclient_connect();
   /* Notify user about the netwoek interface config */
-  User_notification(&gnetif);
+  //User_notification(&gnetif);
 	
-	ModulesInit( );//各模块初始化
-	HAL_GPIO_WritePin(GPIOF,GPIO_PIN_9|GPIO_PIN_8|GPIO_PIN_7 , GPIO_PIN_SET);	
-	SystemSelfingCheck( );
-	HAL_TIM_Base_Start_IT(&TimHandle2);
-	HAL_TIM_Base_Start_IT(&TimHandle3);
-	CURRENT = 4000;
-	Read_Sensor( );	
-	unSystemParameterConfigHandle.SystemParameterConfigHandle.APrice = 200;
-	Fun485Flag=3;
-	Cmd.SendFlag = 0;
-	Cmd.ReceiveFlag = 0;
-	Picc.Value = 0;
-  ShowPileChargeFullOrFree(1);
-	ReadSystemParameter();
+	//ModulesInit( );//各模块初始化
+	//HAL_GPIO_WritePin(GPIOF,GPIO_PIN_9|GPIO_PIN_8|GPIO_PIN_7 , GPIO_PIN_SET);	
+	//SystemSelfingCheck( );
+	//HAL_TIM_Base_Start_IT(&TimHandle2);
+	//HAL_TIM_Base_Start_IT(&TimHandle3);
+	//CURRENT = 4000;
+	//Read_Sensor( );	
+	//unSystemParameterConfigHandle.SystemParameterConfigHandle.APrice = 200;
+	//Fun485Flag=3;
+	//Cmd.SendFlag = 0;
+	//Cmd.ReceiveFlag = 0;
+	//Picc.Value = 0;
+  //ShowPileChargeFullOrFree(1);
+	//ReadSystemParameter();
+    /*
 	unIAPSystemParameter.IAPSystemParameter.IAPState = 2;
 	
 	unIAPSystemParameter.unbuffer[1] = 1;
 	unIAPSystemParameter.unbuffer[2] = 14;
 	unIAPSystemParameter.unbuffer[3] = 16;
 	unIAPSystemParameter.unbuffer[4] = 17;
-	crc = CalcCrc(unIAPSystemParameter.unbuffer,5);
+	//crc = CalcCrc(unIAPSystemParameter.unbuffer,5);
 	unIAPSystemParameter.IAPSystemParameter.CRCHigh = (uint8_t)((crc>>8)&0xff);
 	unIAPSystemParameter.IAPSystemParameter.CRCLow = (uint8_t)(crc&0xff);
-	HAL_I2C_Mem_Write(&I2C1Handle,FM24CL04WRITEADDRESS+2,0x64,I2C_MEMADD_SIZE_8BIT,unIAPSystemParameter.unbuffer,7,0xff);
-
+	//HAL_I2C_Mem_Write(&I2C1Handle,FM24CL04WRITEADDRESS+2,0x64,I2C_MEMADD_SIZE_8BIT,unIAPSystemParameter.unbuffer,7,0xff);
+    */
+    OSInit();
+    OSTaskCreate (SYSMonitorTask,(void *)0,
+                  &SYSMonitorTaskStack[SYSMonitorTaskStackLengh-1],
+                  SYSMonitorTask_PRIO);
+    OSStart();
   
 
 /* 
@@ -551,7 +568,85 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   }
 }
 
+/*********************************************************************************************************
+** Function name:       SYSMonitorTask
+** Descriptions:        主任务，该任务可用来创建其他任务
+** input parameters:    pvData: 没有使用
+** output parameters:   无
+** Returned value:      无
+*********************************************************************************************************/
+void SYSMonitorTask(void *pvData)
+{
+    uint8_t err = 0;
+    //
+    pvData = pvData;
+    OSTaskCreate (LED1Task,(void *)0,
+                  &LED1TaskStack[LED1TaskStackLengh-1],
+                  LED1Task_PRIO);
 
+    OSTaskCreate (LED2Task,(void *)0,
+                  &LED2TaskStack[LED2TaskStackLengh-1],
+                  LED2Task_PRIO);
+
+    OSTaskCreate (LED3Task,(void *)0,
+                  &LED3TaskStack[LED3TaskStackLengh-1],
+                  LED3Task_PRIO);
+    /******************************************************************************************/
+    //
+    for (;;)
+    {
+       // HAL_GPIO_WritePin(GPIOF,GPIO_PIN_9|GPIO_PIN_8|GPIO_PIN_7 , GPIO_PIN_SET);
+        OSTimeDly(500);
+//HAL_GPIO_WritePin(GPIOF,GPIO_PIN_9|GPIO_PIN_8|GPIO_PIN_7 , GPIO_PIN_RESET);
+
+        OSTimeDly(500);
+
+
+    }
+}
+
+void LED1Task(void *pdata)			    //
+{
+    uint8_t err;
+    //
+    pdata=pdata;
+
+    for (;;)
+    {
+        HAL_GPIO_WritePin(GPIOF,GPIO_PIN_7 , GPIO_PIN_SET);
+        OSTimeDly(300);
+        HAL_GPIO_WritePin(GPIOF,GPIO_PIN_7 , GPIO_PIN_RESET);
+        OSTimeDly(300);
+    }
+}
+void LED2Task(void *pdata)		    //
+{
+    uint8_t err;
+    //
+    pdata=pdata;
+
+    for (;;)
+    {
+        HAL_GPIO_WritePin(GPIOF,GPIO_PIN_8, GPIO_PIN_SET);
+        OSTimeDly(500);
+        HAL_GPIO_WritePin(GPIOF,GPIO_PIN_8, GPIO_PIN_RESET);
+        OSTimeDly(500);
+    }
+}
+void LED3Task(void *pdata)			    //
+{
+    uint8_t err;
+    //
+    pdata=pdata;
+
+    for (;;)
+    {
+        HAL_GPIO_WritePin(GPIOF,GPIO_PIN_9 , GPIO_PIN_SET);
+        OSTimeDly(1000);
+        HAL_GPIO_WritePin(GPIOF,GPIO_PIN_9 , GPIO_PIN_RESET);
+        OSTimeDly(1000);
+    }
+}
 
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

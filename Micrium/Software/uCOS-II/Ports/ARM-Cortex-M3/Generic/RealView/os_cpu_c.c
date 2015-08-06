@@ -24,7 +24,7 @@
 */
 
 #define  OS_CPU_GLOBALS
-#include <ucos_ii.h>
+#include "ucos_ii.h"
 
 /*
 *********************************************************************************************************
@@ -363,7 +363,9 @@ void  OSTimeTickHook (void)
 *********************************************************************************************************
 */
 
-void  OS_CPU_SysTickHandler (void)
+//void  OS_CPU_SysTickHandler (void)
+void  SysTick_Handler (void)
+
 {
     OS_CPU_SR  cpu_sr;
 

@@ -407,7 +407,7 @@ void  Mem_Set (void        *pmem,
 *********************************************************************************************************
 */
 
-#if (LIB_MEM_CFG_OPTIMIZE_ASM_EN != DEF_ENABLED)
+#if (LIB_MEM_CFG_OPTIMIZE_ASM_EN == DEF_ENABLED)
 void  Mem_Copy (       void        *pdest,
                 const  void        *psrc,
                        CPU_SIZE_T   size)

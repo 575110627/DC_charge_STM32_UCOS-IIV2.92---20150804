@@ -1,1 +1,12 @@
 .\Obj\lib_math.o: ..\Micrium\Software\uC-LIB\lib_math.c
+.\Obj\lib_math.o: ..\Micrium\Software\uC-LIB\lib_math.h
+.\Obj\lib_math.o: ..\Micrium\Software\uC-CPU\ARM-Cortex-M3\RealView\cpu.h
+.\Obj\lib_math.o: ..\Micrium\Software\uC-CPU\cpu_def.h
+.\Obj\lib_math.o: ..\User\Inc\cpu_cfg.h
+.\Obj\lib_math.o: ..\Micrium\Software\uC-CPU\cpu_core.h
+.\Obj\lib_math.o: ..\Micrium\Software\uC-LIB\lib_def.h
+.\Obj\lib_math.o: ..\Micrium\Software\uC-LIB\lib_mem.h
+.\Obj\lib_math.o: ..\Micrium\Software\uC-CPU\cpu_core.h
+.\Obj\lib_math.o: ..\User\Inc\lib_cfg.h
+.\Obj\lib_math.o: ..\Micrium\Software\uC-LIB\lib_str.h
+.\Obj\lib_math.o: ..\Micrium\Software\uC-LIB\lib_ascii.h

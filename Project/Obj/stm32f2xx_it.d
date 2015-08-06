@@ -61,3 +61,8 @@
 .\Obj\stm32f2xx_it.o: ..\User\Inc\hmi_driver.h
 .\Obj\stm32f2xx_it.o: ..\User\Inc\usart.h
 .\Obj\stm32f2xx_it.o: ..\User\Inc\AT45DB161.h
+.\Obj\stm32f2xx_it.o: ..\Micrium\Software\uCOS-II\Source\ucos_ii.h
+.\Obj\stm32f2xx_it.o: ..\User\Inc\app_cfg.h
+.\Obj\stm32f2xx_it.o: D:\Program Files\Keil\ARM\RV31\Inc\stdio.h
+.\Obj\stm32f2xx_it.o: ..\User\Inc\os_cfg.h
+.\Obj\stm32f2xx_it.o: ..\Micrium\Software\uCOS-II\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h

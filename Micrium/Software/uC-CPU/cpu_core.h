@@ -3,7 +3,7 @@
 *                                                uC/CPU
 *                                    CPU CONFIGURATION & PORT LAYER
 *
-*                          (c) Copyright 2004-2015; Micrium, Inc.; Weston, FL
+*                          (c) Copyright 2004-2011; Micrium, Inc.; Weston, FL
 *
 *               All rights reserved.  Protected by international copyright laws.
 *
@@ -15,8 +15,6 @@
 *               Please help us continue to provide the Embedded community with the finest 
 *               software available.  Your honesty is greatly appreciated.
 *
-*               You can find our product's user manual, API reference, release notes and
-*               more information at https://doc.micrium.com.
 *               You can contact us at www.micrium.com.
 *********************************************************************************************************
 */
@@ -27,7 +25,7 @@
 *                                           CORE CPU MODULE
 *
 * Filename      : cpu_core.h
-* Version       : V1.30.02
+* Version       : V1.29.01
 * Programmer(s) : SR
 *                 ITJ
 *********************************************************************************************************
@@ -65,6 +63,7 @@
 #endif
 
 
+/*$PAGE*/
 /*
 *********************************************************************************************************
 *                                            INCLUDE FILES
@@ -112,6 +111,7 @@
 #endif
 
 
+/*$PAGE*/
 /*
 *********************************************************************************************************
 *                                          CPU CONFIGURATION
@@ -158,6 +158,7 @@
 #define  CPU_TIME_MEAS_NBR_MAX                           128u
 
 
+/*$PAGE*/
 /*
 *********************************************************************************************************
 *                                             DATA TYPES
@@ -260,6 +261,7 @@ CPU_CORE_EXT  CPU_TS_TMR       CPU_IntDisMeasMax_cnts;          /* ... non-reset
 #endif
 
 
+/*$PAGE*/
 /*
 *********************************************************************************************************
 *                                               MACRO'S
@@ -326,7 +328,7 @@ CPU_CORE_EXT  CPU_TS_TMR       CPU_IntDisMeasMax_cnts;          /* ... non-reset
 *                           (A) Note that 'err_rtn_val' in the return statement MUST NOT be enclosed in 
 *                               parentheses.  This allows CPU_SW_EXCEPTION() to return from functions that 
 *                               return 'void', i.e. NO return type or value (see also Note #2b2A).
-*
+*$PAGE*
 *                       (2) In order for CPU_SW_EXCEPTION() to return from functions with various return 
 *                           types/values, each caller function MUST pass an appropriate error return type 
 *                           & value to CPU_SW_EXCEPTION().
@@ -383,6 +385,7 @@ CPU_CORE_EXT  CPU_TS_TMR       CPU_IntDisMeasMax_cnts;          /* ... non-reset
 #endif
 
 
+/*$PAGE*/
 /*
 *********************************************************************************************************
 *                                           CPU_VAL_UNUSED()
@@ -406,6 +409,7 @@ CPU_CORE_EXT  CPU_TS_TMR       CPU_IntDisMeasMax_cnts;          /* ... non-reset
 #define  CPU_VAL_IGNORED(val)       CPU_VAL_UNUSED(val)
 
 
+/*$PAGE*/
 /*
 *********************************************************************************************************
 *                                          CPU_TYPE_CREATE()
@@ -450,13 +454,13 @@ CPU_CORE_EXT  CPU_TS_TMR       CPU_IntDisMeasMax_cnts;          /* ... non-reset
 #define  CPU_TYPE_CREATE(char_1, char_2, char_3, char_4)        (((CPU_INT32U)((CPU_INT08U)(char_1)) << (3u * DEF_OCTET_NBR_BITS)) | \
                                                                  ((CPU_INT32U)((CPU_INT08U)(char_2)) << (2u * DEF_OCTET_NBR_BITS)) | \
                                                                  ((CPU_INT32U)((CPU_INT08U)(char_3)) << (1u * DEF_OCTET_NBR_BITS)) | \
-                                                                 ((CPU_INT32U)((CPU_INT08U)(char_4))))
+                                                                 ((CPU_INT32U)((CPU_INT08U)(char_4)) << (0u * DEF_OCTET_NBR_BITS)))
 
 #else
 
 #if    ((CPU_CFG_DATA_SIZE   == CPU_WORD_SIZE_64) || \
         (CPU_CFG_DATA_SIZE   == CPU_WORD_SIZE_32))
-#define  CPU_TYPE_CREATE(char_1, char_2, char_3, char_4)        (((CPU_INT32U)((CPU_INT08U)(char_1))) | \
+#define  CPU_TYPE_CREATE(char_1, char_2, char_3, char_4)        (((CPU_INT32U)((CPU_INT08U)(char_1)) << (0u * DEF_OCTET_NBR_BITS)) | \
                                                                  ((CPU_INT32U)((CPU_INT08U)(char_2)) << (1u * DEF_OCTET_NBR_BITS)) | \
                                                                  ((CPU_INT32U)((CPU_INT08U)(char_3)) << (2u * DEF_OCTET_NBR_BITS)) | \
                                                                  ((CPU_INT32U)((CPU_INT08U)(char_4)) << (3u * DEF_OCTET_NBR_BITS)))
@@ -465,18 +469,19 @@ CPU_CORE_EXT  CPU_TS_TMR       CPU_IntDisMeasMax_cnts;          /* ... non-reset
 #elif   (CPU_CFG_DATA_SIZE   == CPU_WORD_SIZE_16)
 #define  CPU_TYPE_CREATE(char_1, char_2, char_3, char_4)        (((CPU_INT32U)((CPU_INT08U)(char_1)) << (2u * DEF_OCTET_NBR_BITS)) | \
                                                                  ((CPU_INT32U)((CPU_INT08U)(char_2)) << (3u * DEF_OCTET_NBR_BITS)) | \
-                                                                 ((CPU_INT32U)((CPU_INT08U)(char_3))) | \
+                                                                 ((CPU_INT32U)((CPU_INT08U)(char_3)) << (0u * DEF_OCTET_NBR_BITS)) | \
                                                                  ((CPU_INT32U)((CPU_INT08U)(char_4)) << (1u * DEF_OCTET_NBR_BITS)))
 
 #else                                                           /* Dflt CPU_WORD_SIZE_08.                               */
 #define  CPU_TYPE_CREATE(char_1, char_2, char_3, char_4)        (((CPU_INT32U)((CPU_INT08U)(char_1)) << (3u * DEF_OCTET_NBR_BITS)) | \
                                                                  ((CPU_INT32U)((CPU_INT08U)(char_2)) << (2u * DEF_OCTET_NBR_BITS)) | \
                                                                  ((CPU_INT32U)((CPU_INT08U)(char_3)) << (1u * DEF_OCTET_NBR_BITS)) | \
-                                                                 ((CPU_INT32U)((CPU_INT08U)(char_4))))
+                                                                 ((CPU_INT32U)((CPU_INT08U)(char_4)) << (0u * DEF_OCTET_NBR_BITS)))
 #endif
 #endif
 
 
+/*$PAGE*/
 /*
 *********************************************************************************************************
 *                                         FUNCTION PROTOTYPES
@@ -559,19 +564,7 @@ void             CPU_IntDisMeasStop       (void);
 
 
                                                                         /* ----------- CPU CNT ZEROS FNCTS ------------ */
-#ifdef  CPU_CFG_LEAD_ZEROS_ASM_PRESENT
-#ifdef __cplusplus
-extern  "C" {
-#endif
-#endif
-
 CPU_DATA         CPU_CntLeadZeros         (CPU_DATA    val);
-
-#ifdef  CPU_CFG_LEAD_ZEROS_ASM_PRESENT
-#ifdef __cplusplus
-}
-#endif
-#endif
 
 #if     (CPU_CFG_DATA_SIZE_MAX >= CPU_WORD_SIZE_08)
 CPU_DATA         CPU_CntLeadZeros08       (CPU_INT08U  val);
@@ -587,19 +580,7 @@ CPU_DATA         CPU_CntLeadZeros64       (CPU_INT64U  val);
 #endif
 
 
-#ifdef  CPU_CFG_LEAD_ZEROS_ASM_PRESENT
-#ifdef __cplusplus
-extern  "C" {
-#endif
-#endif
-  
 CPU_DATA         CPU_CntTrailZeros        (CPU_DATA    val);
-
-#ifdef  CPU_CFG_LEAD_ZEROS_ASM_PRESENT
-#ifdef __cplusplus
-}
-#endif
-#endif
 
 #if     (CPU_CFG_DATA_SIZE_MAX >= CPU_WORD_SIZE_08)
 CPU_DATA         CPU_CntTrailZeros08      (CPU_INT08U  val);
@@ -614,8 +595,8 @@ CPU_DATA         CPU_CntTrailZeros32      (CPU_INT32U  val);
 CPU_DATA         CPU_CntTrailZeros64      (CPU_INT64U  val);
 #endif
 
-CPU_INT08U       CPU_PopCnt32             (CPU_INT32U  value);
 
+/*$PAGE*/
 /*
 *********************************************************************************************************
 *                                         FUNCTION PROTOTYPES
@@ -680,6 +661,7 @@ void  CPU_TS_TmrInit(void);
 #endif
 
 
+/*$PAGE*/
 /*
 *********************************************************************************************************
 *                                           CPU_TS_TmrRd()
@@ -767,6 +749,7 @@ CPU_TS_TMR  CPU_TS_TmrRd(void);
 #endif
 
 
+/*$PAGE*/
 /*
 *********************************************************************************************************
 *                                         CPU_TSxx_to_uSec()
@@ -832,6 +815,7 @@ CPU_INT64U  CPU_TS64_to_uSec(CPU_TS64  ts_cnts);
 #endif
 
 
+/*$PAGE*/
 /*
 *********************************************************************************************************
 *                                        CONFIGURATION ERRORS
@@ -912,6 +896,7 @@ CPU_INT64U  CPU_TS64_to_uSec(CPU_TS64  ts_cnts);
 #endif
 
 
+/*$PAGE*/
                                                                 /* Correctly configured in 'cpu_core.h'; DO NOT MODIFY. */
 #ifndef  CPU_CFG_TS_TMR_EN
 #error  "CPU_CFG_TS_TMR_EN                     not #define'd in 'cpu_core.h'"
@@ -989,6 +974,7 @@ CPU_INT64U  CPU_TS64_to_uSec(CPU_TS64  ts_cnts);
 #endif
 
 
+/*$PAGE*/
 /*
 *********************************************************************************************************
 *                                    CPU PORT CONFIGURATION ERRORS

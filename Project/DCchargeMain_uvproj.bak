@@ -348,7 +348,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Drivers\STM32F2xx_HAL_Driver\Inc;..\Drivers\CMSIS\Device\ST\STM32F2xx\Include;..\User\Inc;..\Drivers\BSP\STM322xG_EVAL;..\Drivers\CMSIS\Device\ST\STM32F2xx\Include;..\Middlewares\Third_Party\LwIP\src\include;..\Middlewares\Third_Party\LwIP\src\include\ipv4;..\Middlewares\Third_Party\LwIP\system;..\Ucosii\Include;..\Ucosii\Port;..\Ucosii\Src</IncludePath>
+              <IncludePath>..\Drivers\STM32F2xx_HAL_Driver\Inc;..\Drivers\CMSIS\Device\ST\STM32F2xx\Include;..\Drivers\BSP\STM322xG_EVAL;..\Drivers\CMSIS\Device\ST\STM32F2xx\Include;..\Middlewares\Third_Party\LwIP\src\include;..\Middlewares\Third_Party\LwIP\src\include\ipv4;..\Middlewares\Third_Party\LwIP\system;..\Micrium\Software\uC-CPU;..\Micrium\Software\uC-CPU\ARM-Cortex-M3\RealView;..\Micrium\Software\uC-LIB;..\Micrium\Software\uCOS-II\Ports\ARM-Cortex-M3\Generic\RealView;..\Micrium\Software\uCOS-II\Source;..\User\Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -776,77 +776,127 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Ucosii/port</GroupName>
+          <GroupName>Micrium\Software\uC-CPU</GroupName>
           <Files>
             <File>
-              <FileName>os_cpu_a.asm</FileName>
-              <FileType>2</FileType>
-              <FilePath>..\Ucosii\Port\os_cpu_a.asm</FilePath>
-            </File>
-            <File>
-              <FileName>os_cpu_c.c</FileName>
+              <FileName>cpu_core.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Ucosii\Port\os_cpu_c.c</FilePath>
-            </File>
-            <File>
-              <FileName>os_dbg.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Ucosii\Port\os_dbg.c</FilePath>
+              <FilePath>..\Micrium\Software\uC-CPU\cpu_core.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Ucosii/src</GroupName>
+          <GroupName>Micrium\Software\uC-CPU\ARM-Cortex-M3\RealView</GroupName>
+          <Files>
+            <File>
+              <FileName>cpu_a.asm</FileName>
+              <FileType>2</FileType>
+              <FilePath>..\Micrium\Software\uC-CPU\ARM-Cortex-M3\RealView\cpu_a.asm</FilePath>
+            </File>
+            <File>
+              <FileName>cpu_c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Micrium\Software\uC-CPU\ARM-Cortex-M3\RealView\cpu_c.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Micrium\Software\uC-LIB</GroupName>
+          <Files>
+            <File>
+              <FileName>lib_ascii.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Micrium\Software\uC-LIB\lib_ascii.c</FilePath>
+            </File>
+            <File>
+              <FileName>lib_math.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Micrium\Software\uC-LIB\lib_math.c</FilePath>
+            </File>
+            <File>
+              <FileName>lib_mem.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Micrium\Software\uC-LIB\lib_mem.c</FilePath>
+            </File>
+            <File>
+              <FileName>lib_str.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Micrium\Software\uC-LIB\lib_str.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Micrium\Software\uCOS-II\Ports\ARM-Cortex-M3\Generic\RealView</GroupName>
+          <Files>
+            <File>
+              <FileName>os_cpu_a.asm</FileName>
+              <FileType>2</FileType>
+              <FilePath>..\Micrium\Software\uCOS-II\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu_a.asm</FilePath>
+            </File>
+            <File>
+              <FileName>os_cpu_c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Micrium\Software\uCOS-II\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu_c.c</FilePath>
+            </File>
+            <File>
+              <FileName>os_dbg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Micrium\Software\uCOS-II\Ports\ARM-Cortex-M3\Generic\RealView\os_dbg.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Micrium\Software\uCOS-II\Source</GroupName>
           <Files>
             <File>
               <FileName>os_core.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Ucosii\Src\os_core.c</FilePath>
+              <FilePath>..\Micrium\Software\uCOS-II\Source\os_core.c</FilePath>
             </File>
             <File>
               <FileName>os_flag.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Ucosii\Src\os_flag.c</FilePath>
+              <FilePath>..\Micrium\Software\uCOS-II\Source\os_flag.c</FilePath>
             </File>
             <File>
               <FileName>os_mbox.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Ucosii\Src\os_mbox.c</FilePath>
+              <FilePath>..\Micrium\Software\uCOS-II\Source\os_mbox.c</FilePath>
             </File>
             <File>
               <FileName>os_mem.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Ucosii\Src\os_mem.c</FilePath>
+              <FilePath>..\Micrium\Software\uCOS-II\Source\os_mem.c</FilePath>
             </File>
             <File>
               <FileName>os_mutex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Ucosii\Src\os_mutex.c</FilePath>
+              <FilePath>..\Micrium\Software\uCOS-II\Source\os_mutex.c</FilePath>
             </File>
             <File>
               <FileName>os_q.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Ucosii\Src\os_q.c</FilePath>
+              <FilePath>..\Micrium\Software\uCOS-II\Source\os_q.c</FilePath>
             </File>
             <File>
               <FileName>os_sem.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Ucosii\Src\os_sem.c</FilePath>
+              <FilePath>..\Micrium\Software\uCOS-II\Source\os_sem.c</FilePath>
             </File>
             <File>
               <FileName>os_task.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Ucosii\Src\os_task.c</FilePath>
+              <FilePath>..\Micrium\Software\uCOS-II\Source\os_task.c</FilePath>
             </File>
             <File>
               <FileName>os_time.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Ucosii\Src\os_time.c</FilePath>
+              <FilePath>..\Micrium\Software\uCOS-II\Source\os_time.c</FilePath>
             </File>
             <File>
               <FileName>os_tmr.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Ucosii\Src\os_tmr.c</FilePath>
+              <FilePath>..\Micrium\Software\uCOS-II\Source\os_tmr.c</FilePath>
             </File>
           </Files>
         </Group>
